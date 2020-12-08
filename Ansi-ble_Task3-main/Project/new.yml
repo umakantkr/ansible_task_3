@@ -1,0 +1,9 @@
+- hosts: localhost
+  roles:
+    - role: EC2_AWS
+- hosts: ec2
+  roles:
+     - role: BackendServer
+- hosts: loadbalancer
+  roles:
+     - role: LoadBalancer

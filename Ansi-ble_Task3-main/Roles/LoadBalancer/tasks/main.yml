@@ -1,0 +1,14 @@
+# "Configure LoadBalancer"
+- name: "Install haproxy"
+  package: 
+    name: "haproxy"
+    state: present
+- name: "Replace the LoadBalancer Config file"
+  template:
+    src: templates/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+  notify: "Restart the Service "
+- name: "Start the haproxy"
+  service:
+    name: "haproxy"
+    state: started

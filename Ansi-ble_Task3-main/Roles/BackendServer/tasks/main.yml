@@ -1,0 +1,13 @@
+# Configure webserver in Remote Host
+- name: "Install httpd"
+  package:
+    name: "httpd"
+    state: present
+- name: "Copy website with host name" 
+  copy:
+    content: "This is Server{{ ansible_hostname }}" 
+    dest: /var/www/html/index.html
+- name: "Starting the webserver"
+  service:
+    name: "httpd"
+    state: started
